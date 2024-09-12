@@ -15,7 +15,7 @@ use super::game::{Coordinate, Difficulty, Game, Rule, Status, COLS, ROWS};
 pub struct App {
   pub title: String,
   pub should_quit: bool,
-  pub enhanced_graphics: bool,
+  //pub enhanced_graphics: bool,
   pub message: String,
   pub frame_count: u16,
   pub start_time: Instant,
@@ -31,7 +31,7 @@ impl App {
     App {
       title,
       should_quit: false,
-      enhanced_graphics: true,
+      //enhanced_graphics: true,
       active_column: 0,
       active_row: 0,
       selected_coordinates: BTreeSet::new(),

@@ -1,7 +1,6 @@
 use std::{
   collections::{BTreeMap, BTreeSet},
   fmt::{self, Display},
-  usize,
 };
 
 use rand::{prelude::ThreadRng, seq::SliceRandom, Rng};
@@ -373,7 +372,7 @@ impl Board {
     let mut hit_count = 0;
     let mut miss_count = 0;
     for (shot, status) in response {
-      let mut pos = &mut self.positions[shot.0][shot.1];
+      let pos = &mut self.positions[shot.0][shot.1];
       if pos.status == Status::Space || pos.status == Status::Live || status == Status::Kill {
         pos.status = status;
       }
@@ -492,7 +491,7 @@ impl Ship {
     ship_found
   }
 
-  fn draw(&self, positions: &mut Vec<Vec<Position>>, start_cord: Coordinate) -> bool {
+  fn draw(&self, positions: &mut [Vec<Position>], start_cord: Coordinate) -> bool {
     let mut ship_drawn = false;
     if !positions.is_empty() && !positions[0].is_empty() {
       let shape = self.shape();
