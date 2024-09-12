@@ -16,7 +16,7 @@ exclude = ["assets/*", ".github", "Makefile.toml", "CONTRIBUTING.md", "*.log", "
 
 
 [dependencies]
-tui = { version = "0.15", default-features = false, features = ['termion'] }
+tui = { package = "ratatui", version = "0.23", default-features = false, features = ['termion'] }
 termion = "1.5"
 rand = "0.8"
 uuid = { version = "0.8", features = ["v4"]}

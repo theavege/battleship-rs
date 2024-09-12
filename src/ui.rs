@@ -123,15 +123,15 @@ fn draw_board<B: Backend>(
     .constraints(row_constraints)
     .split(board_rect);
 
-  for (r, row_rect) in row_rects.into_iter().enumerate() {
+  for (r, row_rect) in row_rects.iter().enumerate() {
     let col_rects = Layout::default()
       .direction(Direction::Horizontal)
       .vertical_margin(0)
       .horizontal_margin(1)
       .constraints(col_constraints.clone())
-      .split(row_rect);
+      .split(*row_rect);
 
-    for (c, cell_rect) in col_rects.into_iter().enumerate() {
+    for (c, cell_rect) in col_rects.iter().enumerate() {
       let cell = app.cell((r, c), is_self);
       let single_row_text = format!(
         "{:^length$}",
@@ -159,7 +159,7 @@ fn draw_board<B: Backend>(
       let cell_text = Paragraph::new(text)
         .block(cell.block())
         .style(cell.text_style());
-      f.render_widget(cell_text, cell_rect);
+      f.render_widget(cell_text, *cell_rect);
     }
   }
 }
